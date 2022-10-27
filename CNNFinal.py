@@ -153,20 +153,20 @@ class ConvNeuralNet(nn.Module):
 
     # Progresses data across layers
     def forward(self, x):
-        out = self.conv_layer1(x.cuda())
-        out = self.conv_layer2(out.cuda())
-        out = self.max_pool1(out.cuda())
+        out = self.conv_layer1(x)
+        out = self.conv_layer2(out)
+        out = self.max_pool1(out)
 
-        out = self.conv_layer3(out.cuda())
-        out = self.conv_layer4(out.cuda())
-        out = self.max_pool2(out.cuda())
+        out = self.conv_layer3(out)
+        out = self.conv_layer4(out)
+        out = self.max_pool2(out)
 
-        out = out.reshape(out.size(0).cuda(), -1)
+        out = out.reshape(out.size(0), -1)
 
-        out = self.fc1(out.cuda())
-        out = self.relu1(out.cuda())
-        out = self.fc2(out.cuda())
-        return out.cuda()
+        out = self.fc1(out)
+        out = self.relu1(out)
+        out = self.fc2(out)
+        return out
 
 # Setting Hyperparameters
 model = ConvNeuralNet(num_classes)
@@ -189,8 +189,8 @@ for epoch in range(num_epochs):
         labels = labels.to(device)
 
         # Forward pass
-        outputs = model(images.cuda())
-        loss = criterion(outputs.cuda(), labels)
+        outputs = model(images)
+        loss = criterion(outputs, labels)
 
         # Backward and optimize
         optimizer.zero_grad()
@@ -206,7 +206,7 @@ with torch.no_grad():
     for images, labels in train_dl:
         images = images.to(device)
         labels = labels.to(device)
-        outputs = model(images.cuda())
+        outputs = model(images)
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
