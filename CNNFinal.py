@@ -18,11 +18,11 @@ import cv2
 # flip horizontally and vertically, Resize to 128X128
 
 def main():
-    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
+    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train/99"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
-        path = "/home/azadeh/Projects/CNN/Data/small-train"
+        path = "/home/azadeh/Projects/CNN/Data/small-train/99"
         angles = [0]
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             original_img = Image.open(file_name)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 
 def main():
-    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
+    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train/99"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
@@ -92,8 +92,8 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 #train and test data directory
-data_dir = "/home/azadeh/Projects/CNN/Data/small-train"
-test_data_dir = "/home/azadeh/Projects/CNN/Data/small-validation"
+data_dir = "/home/azadeh/Projects/CNN/Data/small-train/99"
+test_data_dir = "/home/azadeh/Projects/CNN/Data/small-validation/4"
 
 
 
@@ -153,20 +153,20 @@ class ConvNeuralNet(nn.Module):
 
     # Progresses data across layers
     def forward(self, x):
-        out = self.conv_layer1(x)
-        out = self.conv_layer2(out)
-        out = self.max_pool1(out)
+        out = self.conv_layer1(x.cuda())
+        out = self.conv_layer2(out.cuda())
+        out = self.max_pool1(out.cuda())
 
-        out = self.conv_layer3(out)
-        out = self.conv_layer4(out)
-        out = self.max_pool2(out)
+        out = self.conv_layer3(out.cuda())
+        out = self.conv_layer4(out.cuda())
+        out = self.max_pool2(out.cuda())
 
-        out = out.reshape(out.size(0), -1)
+        out = out.reshape(out.size(0).cuda(), -1)
 
-        out = self.fc1(out)
-        out = self.relu1(out)
-        out = self.fc2(out)
-        return out
+        out = self.fc1(out.cuda())
+        out = self.relu1(out.cuda())
+        out = self.fc2(out.cuda())
+        return out.cuda()
 
 # Setting Hyperparameters
 model = ConvNeuralNet(num_classes)
@@ -189,7 +189,7 @@ for epoch in range(num_epochs):
         labels = labels.to(device)
 
         # Forward pass
-        outputs = model(images)
+        outputs = model(images.cuda())
         loss = criterion(outputs, labels)
 
         # Backward and optimize
