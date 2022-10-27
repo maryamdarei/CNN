@@ -189,8 +189,8 @@ for epoch in range(num_epochs):
         labels = labels.to(device)
 
         # Forward pass
-        outputs = model(images)
-        loss = criterion(outputs, labels)
+        outputs = model(images.cuda())
+        loss = criterion(outputs.cuda(), labels)
 
         # Backward and optimize
         optimizer.zero_grad()
@@ -206,7 +206,7 @@ with torch.no_grad():
     for images, labels in train_dl:
         images = images.to(device)
         labels = labels.to(device)
-        outputs = model(images)
+        outputs = model(images.cuda())
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
