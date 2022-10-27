@@ -18,11 +18,11 @@ import cv2
 # flip horizontally and vertically, Resize to 128X128
 
 def main():
-    path_of_the_directory = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test"
+    path_of_the_directory = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
-        path = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test"
+        path = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
         angles = [0]
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             original_img = Image.open(file_name)
@@ -41,7 +41,7 @@ def main():
             for angel in angles:
                 rot_suffix = "_r{:03d}{:s}".format(angel, jpg_ext)
                 file_name_rot = file_name.replace(jpg_ext, rot_suffix)
-                horz_img = original_img.transpose(method=Image.FLIP_LEFT_RIGHT)
+                horz_img = new_image.transpose(method=Image.FLIP_LEFT_RIGHT)
                 horz_img.save(file_name_rot)
                 print("Rotated: {:s} by {:3d} degrees to {:s}".format(file_name, angel, file_name_rot))
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 
 def main():
-    path_of_the_directory = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test"
+    path_of_the_directory = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
@@ -91,8 +91,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 #train and test data directory
-data_dir = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/small-train"
-test_data_dir = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/Herb/small-validation"
+data_dir = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
+test_data_dir = "/home/azadeh/Projects/cnndemo/herbarium_2019_validation_data"
 
 
 
