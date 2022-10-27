@@ -18,11 +18,11 @@ import cv2
 # flip horizontally and vertically, Resize to 128X128
 
 def main():
-    path_of_the_directory = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
+    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
-        path = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
+        path = "/home/azadeh/Projects/CNN/Data/small-train"
         angles = [0]
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             original_img = Image.open(file_name)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 
 def main():
-    path_of_the_directory = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
+    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
@@ -87,12 +87,13 @@ learning_rate = 0.001
 num_epochs = 20
 
 # Device will determine whether to run the training on GPU or CPU.
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 #train and test data directory
-data_dir = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
-test_data_dir = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-validation"
+data_dir = "/home/azadeh/Projects/CNN/Data/small-train"
+test_data_dir = "/home/azadeh/Projects/CNN/Data/small-validation"
 
 
 
