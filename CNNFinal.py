@@ -18,11 +18,11 @@ import cv2
 # flip horizontally and vertically, Resize to 128X128
 
 def main():
-    path_of_the_directory = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
+    path_of_the_directory = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
-        path = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
+        path = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
         angles = [0]
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             original_img = Image.open(file_name)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 
 def main():
-    path_of_the_directory = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
+    path_of_the_directory = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
@@ -91,8 +91,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 #train and test data directory
-data_dir = "/home/azadeh/Projects/cnndemo/herbarium_2019_training_data"
-test_data_dir = "/home/azadeh/Projects/cnndemo/herbarium_2019_validation_data"
+data_dir = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-train"
+test_data_dir = "/home/azadeh/Projects/cnndemo/Data/Data/Herb/small-validation"
 
 
 
