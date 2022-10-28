@@ -132,6 +132,8 @@ print(f"Length of Validation Data : {len(val_data)}")
 train_dl = DataLoader(train_data, batch_size, shuffle = True, num_workers = 4, pin_memory = True)
 val_dl = DataLoader(val_data, batch_size*2, num_workers = 4, pin_memory = True)
 
+print(nn.Module.conv_layer1.weight.device)
+
 # CNN from Scratch:
 # Creating a CNN class
 class ConvNeuralNet(nn.Module):
