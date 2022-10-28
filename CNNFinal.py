@@ -89,7 +89,6 @@ num_epochs = 20
 # Device will determine whether to run the training on GPU or CPU.
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
 #train and test data directory
 data_dir = "/home/azadeh/Projects/CNN/Data/small-train"
 test_data_dir = "/home/azadeh/Projects/CNN/Data/small-validation"
