@@ -87,7 +87,13 @@ learning_rate = 0.001
 num_epochs = 20
 
 # Device will determine whether to run the training on GPU or CPU.
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+else:
+    device = torch.device("cpu")
+
 
 #train and test data directory
 data_dir = "/home/azadeh/Projects/CNN/Data/small-train"
