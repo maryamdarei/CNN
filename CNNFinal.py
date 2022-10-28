@@ -171,6 +171,7 @@ class ConvNeuralNet(nn.Module):
 
 # Setting Hyperparameters
 model = ConvNeuralNet(num_classes)
+model.to(device)
 
 print(model.conv_layer1.weight.device)
 
