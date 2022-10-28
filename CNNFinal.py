@@ -18,11 +18,11 @@ import cv2
 # flip horizontally and vertically, Resize to 128X128
 
 def main():
-    path_of_the_directory = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test/small-train"
+    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
-        path = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test/small-train"
+        path = "/home/azadeh/Projects/CNN/Data/small-train"
         angles = [0]
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             original_img = Image.open(file_name)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
 
 
 def main():
-    path_of_the_directory = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test/small-train"
+    path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
     for filename in os.listdir(path_of_the_directory):
         img_dir = os.path.join(path_of_the_directory, filename)
         jpg_ext = ".jpg"
@@ -90,8 +90,8 @@ num_epochs = 20
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 #train and test data directory
-data_dir = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test/small-train"
-test_data_dir = "/Users/azadehbaghdadi/Desktop/New research-CNN/Project/Data/test/small-validation"
+data_dir = "/home/azadeh/Projects/CNN/Data/small-train"
+test_data_dir = "/home/azadeh/Projects/CNN/Data/small-validation"
 
 
 
