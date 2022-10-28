@@ -151,7 +151,7 @@ class ConvNeuralNet(nn.Module):
 
     # Progresses data across layers
     def forward(self, x):
-        out = self.conv_layer1(x.torch.device)
+        out = self.conv_layer1(x.cuda())
         out = self.conv_layer2(out)
         out = self.max_pool1(out)
 
