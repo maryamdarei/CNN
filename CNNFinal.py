@@ -87,8 +87,7 @@ learning_rate = 0.001
 num_epochs = 20
 
 # Device will determine whether to run the training on GPU or CPU.
-#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 #train and test data directory
@@ -189,7 +188,7 @@ for epoch in range(num_epochs):
         labels = labels.to(device)
 
         # Forward pass
-        outputs = model(images.cuda())
+        outputs = model(images)
         loss = criterion(outputs, labels)
 
         # Backward and optimize
