@@ -17,6 +17,7 @@ import cv2
 # Data Augmentation:
 # flip horizontally and vertically, Resize to 128X128
 
+print(torch.cuda.is_available())
 def main():
     path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
     for filename in os.listdir(path_of_the_directory):
@@ -150,8 +151,8 @@ class ConvNeuralNet(nn.Module):
         self.fc2 = nn.Linear(128, num_classes)
 
     # Progresses data across layers
-    def forward(self, x):
-        out = self.conv_layer1(x.cuda())
+    def forward(self , x):
+        out = self.conv_layer1(x)
         out = self.conv_layer2(out)
         out = self.max_pool1(out)
 
