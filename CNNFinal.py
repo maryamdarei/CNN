@@ -185,8 +185,8 @@ for epoch in range(num_epochs):
     # Load in the data in batches using the train_loader object
     for i, (images, labels) in enumerate(train_dl):
         # Move tensors to the configured device
-        images = images.to(device)
-        labels = labels.to(device)
+        images = images.to(torch.device('cuda'))
+        labels = labels.to(torch.device('cuda'))
 
         # Forward pass
         outputs = model(images)
