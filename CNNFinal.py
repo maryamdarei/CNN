@@ -16,7 +16,7 @@ import cv2
 
 # Data Augmentation:
 # flip horizontally and vertically, Resize to 128X128
-
+imageSize = 512
 print(torch.cuda.is_available())
 def main():
     path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
@@ -27,7 +27,7 @@ def main():
         angles = [0]
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             original_img = Image.open(file_name)
-            new_image = original_img.resize((128, 128))
+            new_image = original_img.resize((imageSize, imageSize))
             for angel in angles:
                 rot_suffix = "_r{:03d}{:s}".format(angel, jpg_ext)
                 file_name_rot = file_name.replace(jpg_ext, rot_suffix)
@@ -38,7 +38,7 @@ def main():
         angles = [1]
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             original_img = Image.open(file_name)
-            new_image = original_img.resize((128, 128))
+            new_image = original_img.resize((imageSize, imageSize))
             for angel in angles:
                 rot_suffix = "_r{:03d}{:s}".format(angel, jpg_ext)
                 file_name_rot = file_name.replace(jpg_ext, rot_suffix)
@@ -65,7 +65,7 @@ def main():
         for file_name in glob.iglob(os.path.join(img_dir, "*" + jpg_ext)):
             # image = Image.open(file_name)
             original_img = Image.open(file_name)
-            new_image = original_img.resize((128, 128))
+            new_image = original_img.resize((imageSize, imageSize))
             for angle in angles:
                 rot_suffix = "_r{:03d}{:s}".format(angle, jpg_ext)
                 file_name_rot = file_name.replace(jpg_ext, rot_suffix)
@@ -98,10 +98,10 @@ test_data_dir = "/home/azadeh/Projects/CNN/Data/small-validation"
 
 #load the train and test data
 train_dataset = ImageFolder(data_dir,transform = transforms.Compose([
-    transforms.Resize((128,128)),transforms.ToTensor()
+    transforms.Resize((imageSize,imageSize)),transforms.ToTensor()
 ]))
 test_dataset = ImageFolder(test_data_dir,transforms.Compose([
-    transforms.Resize((128,128)),transforms.ToTensor()
+    transforms.Resize((imageSize,imageSize)),transforms.ToTensor()
 ]))
 
 img, label = train_dataset[0]
