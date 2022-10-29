@@ -16,7 +16,7 @@ import cv2
 
 # Data Augmentation:
 # flip horizontally and vertically, Resize to 128X128
-imageSize = 512
+imageSize = 256
 print(torch.cuda.is_available())
 def main():
     path_of_the_directory = "/home/azadeh/Projects/CNN/Data/small-train"
